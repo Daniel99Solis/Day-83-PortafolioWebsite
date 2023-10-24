@@ -1,0 +1,38 @@
+{% from "bootstrap5/form.html" import render_form %}
+{% include "header.html" %}
+
+<!-- Masthead-->
+<header id="home" style="background-image: url('../static/assets/img/contact-bg.jpg')">
+    <div class="container px-4 px-lg-5 h-100">
+        <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+            <div class="col-lg-8 align-self-end">
+                <h1 class="text-white font-weight-bold" style="margin-top: 2em">Log in Admin</h1>
+                <p class="text-white font-weight-bold">Login as an admin to make changes to your portfolio</p>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Login Admin -->
+<section class="page-section bg-light" id="admin" style="padding: 15px 15px 15px 15px">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center mb-2">
+            <div class="col-lg-6">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                      {% for message in messages %}
+                      <p class="flash">{{ message }}</p>
+                      {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+        <div class="row gx-4 gx-lg-5 justify-content-center mb-4">
+            <div class="col-lg-6">
+                {{ render_form(form) }}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include "footer.html" %}

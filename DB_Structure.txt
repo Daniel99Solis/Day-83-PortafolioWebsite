@@ -1,0 +1,38 @@
+// Creation of DB in 
+// https://dbdiagram.io/d
+
+// Documentation of the page
+// https://dbml.dbdiagram.io/docs
+
+Table projects {
+  id integer [primary key]
+  user_id integer
+  category_id integer
+  title varchar
+  description varchar
+  body varchar
+  date timestamp
+  img_url varchar
+}
+
+Table categories {
+  id integer [primary key]
+  name varchar
+  description varchar
+  img_logo varchar
+  img_bg varchar
+  projects integer
+}
+
+Table users {
+  id integer [primary key]
+  email varchar
+  password varchar
+  name varchar
+  projects integer
+}
+
+
+Ref: projects.user_id > users.id // many-to-one
+Ref: projects.category_id > categories.id // many-to-one
+

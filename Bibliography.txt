@@ -1,0 +1,3 @@
+# Static Files (relative and absolute)
+https://stackoverflow.com/questions/57395292/flask-is-loading-static-files-from-a-different-path-when-a-route-is-called
+

@@ -1,0 +1,25 @@
+{% from "bootstrap5/form.html" import render_form %}
+{% include "header.html" %}
+
+<header id="home" style="background-image: url( {{ url_for('static', filename='assets/img/contact-bg.jpg') }} )">
+    <div class="container px-4 px-lg-5 h-100">
+        <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+            <div class="col-lg-8 align-self-end">
+                <h1 class="text-white font-weight-bold" style="margin: 2em">{{ action }} {{ cat_name }} Project!</h1>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Edit -->
+<section class="page-section bg-light" id="edit" style="padding: 15px 15px 15px 15px">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
+            <div class="col-lg-9">
+                {{ ckeditor.load() }} {{ ckeditor.config(name='body') }}
+                {{ render_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include "footer.html" %}

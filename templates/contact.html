@@ -1,0 +1,42 @@
+{% from "bootstrap5/form.html" import render_form %}
+{% include "header.html" %}
+
+<header id="home" style="background-image: url('../static/assets/img/contact-bg.jpg')">
+    <div class="container px-4 px-lg-5 h-100">
+        <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+            <div class="col-lg-8 align-self-end">
+                {% if method == "POST" %}
+                    <h1 class="text-white font-weight-bold" style="margin: 2em">Message Successfully Sent!</h1>
+                {% else %}
+                    <h1 class="text-white font-weight-bold" style="margin: 2em">Contact Me!</h1>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Contact-->
+<section class="page-section bg-light" id="contact" style="padding: 15px 15px 15px 15px">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-lg-8 col-xl-6 text-center">
+                <h2 class="mt-0">Let's Get In Touch!</h2>
+                <hr class="divider" />
+                <p class="text-muted mb-2">If you want to work with me and create a team to innovate the world!</p>
+            </div>
+        </div>
+        <div class="row gx-4 gx-lg-5 justify-content-center mb-2">
+            <div class="col-lg-7">
+                {{ ckeditor.load() }} {{ ckeditor.config(name='message') }}
+                {{ render_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+            </div>
+        </div>
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-lg-4 text-center mb-2 mb-lg-0">
+                <i class="bi-phone fs-2 mb-1 text-muted"></i>
+                <div>55 65 37 89 72</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include "footer.html" %}

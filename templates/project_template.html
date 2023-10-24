@@ -1,0 +1,33 @@
+{% include "header.html" %}
+
+    <header id="home" style="background-image: url({{ url_for('static', filename=category.img_bg) }})">
+        <div class="container px-4 px-lg-5 h-100">
+            <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+                <div class="col-lg-7 align-self-end">
+                    <h1 class="text-black font-weight-bold" style="margin-top: 2em">{{ project.title }}</h1>
+                    <h3 class="text-black font-weight-bold" style="margin: 1em">{{ project.description }}</h3>
+                    <h4 class="text-black font-weight-bold" style="margin: 1em">{{ project.date }}</h4>
+                </div>
+                <div class="col-lg-5 align-self-end">
+                    <img src="{{ project.img_url }}" height="200px" style="border-radius: 10%">
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--Body of the post-->
+    <section class="section posts-entry posts-entry-sm bg-light">
+        <div class="container" style="padding: 4em">
+            <div class="container">
+                {{ project.body|safe }}
+            </div>
+            <div class="container text-center">
+                {% if user == "admin" %}
+                    <a class="btn btn-primary btn-xl" href="{{ url_for('edit_project', category=category.name, project_id=project.id) }}">Edit</a>
+                {% else %}
+                    <a class="btn btn-primary btn-xl" href="{{ url_for('contact') }}">Contact Me</a>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+{% include "footer.html" %}
